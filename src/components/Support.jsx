@@ -45,10 +45,10 @@ const Support = () => {
     <>
       <div className="mx-auto mt-4">
         <Section padding="none">
-          <Text className="text-subheading font-subheading text-start text-brown sm:mb-2 mb-2">
+          <Text className="text-subheading font-subheading text-start text-black sm:mb-4 mb-2">
             Account Opening
           </Text>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-2">
             {blogs.map((post) => (
               <BlogCard
                 key={post.id}

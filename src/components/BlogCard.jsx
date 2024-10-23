@@ -17,7 +17,7 @@ function BlogCard({ title, excerpt, feature_image, slug, primary_author }) {
             <p className="text-body line-clamp-4 font-body ">{excerpt}</p>
           </div>
         </div>
-        <div className="flex justify-end mt-2 items-center">
+        <div className="flex justify-end mt-4 items-center">
           <div className="group-hover:text-black -mt-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
