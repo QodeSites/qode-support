@@ -49,16 +49,25 @@ const Footer = () => {
               className="text-body sm:text-body text-black"
               itemClassName="mb-18 hover:text-black"
               items={[
-                <CustomLink key="about-us" to="/about-us">
+                <CustomLink key="about-us" to="https://qodeinvest.com/about-us">
                   About Us
                 </CustomLink>,
-                <CustomLink key="contact-us" to="/contact-us">
+                <CustomLink
+                  key="contact-us"
+                  to="https://qodeinvest.com/contact-us"
+                >
                   Contact Us
                 </CustomLink>,
-                <CustomLink key="privacy-policy" to="/privacy-policy">
+                <CustomLink
+                  key="privacy-policy"
+                  to="https://qodeinvest.com/privacy-policy"
+                >
                   Privacy Policy
                 </CustomLink>,
-                <CustomLink key="terms-n-conditions" to="/terms-n-conditions">
+                <CustomLink
+                  key="terms-n-conditions"
+                  to="https://qodeinvest.com/terms-n-conditions"
+                >
                   Terms and Conditions
                 </CustomLink>,
                 <CustomLink
@@ -79,21 +88,27 @@ const Footer = () => {
               className="text-body sm:text-body text-black"
               itemClassName="mb-18 hover:text-black"
               items={[
-                <CustomLink key="all-weather" to="/strategies/qode-all-weather">
+                <CustomLink
+                  key="all-weather"
+                  to="https://qodeinvest.com/strategies/qode-all-weather"
+                >
                   Qode All Weather
                 </CustomLink>,
-                <CustomLink key="growth-fund" to="/strategies/qode-growth-fund">
+                <CustomLink
+                  key="growth-fund"
+                  to="https://qodeinvest.com/strategies/qode-growth-fund"
+                >
                   Qode Growth Fund
                 </CustomLink>,
                 <CustomLink
                   key="velocity-fund"
-                  to="/strategies/qode-velocity-fund"
+                  to="https://qodeinvest.com/strategies/qode-velocity-fund"
                 >
                   Qode Velocity Fund
                 </CustomLink>,
                 <CustomLink
                   key="future-horizons"
-                  to="/blogs/qode-future-horizons"
+                  to="https://qodeinvest.com/blogs/qode-future-horizons"
                 >
                   Qode Future Horizons
                 </CustomLink>,
@@ -116,7 +131,10 @@ const Footer = () => {
                 >
                   Smart ODR
                 </CustomLink>,
-                <CustomLink key="disclosure" to="/disclosure">
+                <CustomLink
+                  key="disclosure"
+                  to="https://qodeinvest.com/disclosure"
+                >
                   Disclosure
                 </CustomLink>,
                 // <CustomLink key="support" to="/support">
