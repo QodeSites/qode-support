@@ -72,7 +72,7 @@ const Footer = () => {
                 </CustomLink>,
                 <CustomLink
                   key="portfolio-visualiser"
-                  to="/portfolio-visualiser"
+                  to="https://qodeinvest.com/portfolio-visualiser"
                 >
                   Portfolio Visualizer
                 </CustomLink>,
