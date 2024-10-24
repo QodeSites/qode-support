@@ -11,7 +11,7 @@ export default function Home() {
         <div className="bg-white  mt-2">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
-              <Heading className="text-brown">
+              <Heading isItalic className="text-brown">
                 Support
               </Heading>
 
