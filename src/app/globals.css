@@ -259,6 +259,7 @@ font-weight: 400;
     padding: 0.5em;
     width: auto !important;
   text-align: start;
+  vertical-align: top; 
 }
 
 /* Scrolling for small screens */
