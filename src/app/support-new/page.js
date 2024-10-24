@@ -29,10 +29,10 @@ const page = () => {
     return (
         <div className="min-h-screen bg-gray-50">
             {/* Banner */}
-            <div className="bg-lightBeige py-10 px-4">
+            <div className=" pt-8 px-4">
                 <div className="max-w-4xl mx-auto text-center">
-                    <Heading className="text-brown">How can we help you?</Heading>
-                    <p className="text-xl text-black">Find answers to your questions and get the support you need</p>
+                    <Heading isItalic className="text-brown">Support Portal</Heading>
+                    {/* <p className="text-xl text-black">Find answers to your questions and get the support you need</p> */}
                 </div>
             </div>
 
