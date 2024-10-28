@@ -3,7 +3,7 @@ import Heading from "./common/Heading";
 
 function BlogCard({ title, excerpt, feature_image, slug, primary_author }) {
   return (
-    <Link href={`/support/${slug}`} className="block flex-grow">
+    <Link href={`/account-opening/${slug}`} className="block flex-grow">
       <div className="h-full group overflow-hidden relative flex flex-col">
         <div className="flex flex-col h-full">
           <div className="mb-2 overflow-hidden h-[4.5em]">
