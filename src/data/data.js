@@ -7,8 +7,8 @@ const supportCategories = [
                 link: "/account-opening/how-to-open-an-account-with-our-pms-as-an-individual",
                 questions: [
                     { question: "How can I open Qode Account?", },
-                    { question: "How can i reach out to Qode representatives?", },
-                    { question: "Who can i open an Account with Qode?", },
+                    { question: "How can I reach out to Qode representatives?", },
+                    { question: "Who can I open an Account with Qode?", },
                     { question: "Are there any account maintenance fees?", },
                     {
                         question: "How can I find detailed information about fees and charges?",
@@ -17,13 +17,13 @@ const supportCategories = [
             },
             {
                 name: "Online", link: "/account-opening/how-to-open-an-account-with-our-pms-as-an-individual", questions: [
-                    { question: "How can i open an Account online?", },
+                    { question: "How can I open an Account online?", },
                     { question: "How much time does it take to open an account online?", },
                 ]
             },
             {
                 name: "Offline", link: "/account-opening/how-to-open-an-account-with-our-pms-as-an-individual", questions: [
-                    { question: "How can i open an Account offline?", },
+                    { question: "How can I open an Account offline?", },
                     { question: "How much time does it take to open an account offline?", },
                 ]
             },
