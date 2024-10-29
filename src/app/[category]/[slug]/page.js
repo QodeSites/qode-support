@@ -8,8 +8,7 @@ async function getBlogPost(slug) {
     try {
         const key = process.env.NEXT_PUBLIC_GHOST_BLOG_KEY;
         const response = await fetch(
-            `https://blogs.qodeinvest.com/ghost/api/content/posts/?key=${key}&filter=slug:${slug}&include=tags`,
-            { next: { revalidate: 3600 } } // Cache for 1 hour
+            `https://blogs.qodeinvest.com/ghost/api/content/posts/?key=${key}&filter=slug:${slug}&include=tags`
         );
 
         if (!response.ok) {
