@@ -114,7 +114,7 @@ const Header = () => {
             {/* Logo */}
             <div className="flex-shrink-0">
               <CustomLink
-                href="/"
+                href="https://qodeinvest.com/"
                 className={`playfair-display-font text-[24px] sm:text-[32px] font-bold ${
                   isHomePage && !isScrolled ? "text-beige" : "text-beige"
                 }`}

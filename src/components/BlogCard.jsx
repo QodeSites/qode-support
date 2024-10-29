@@ -1,20 +1,39 @@
 import Link from "next/link";
 import Heading from "./common/Heading";
 
-function BlogCard({ title, excerpt, feature_image, slug, primary_author }) {
+function BlogCard({
+  title,
+  excerpt,
+  feature_image,
+  slug,
+  primary_author,
+  tags,
+}) {
+  const getRouteFromTags = (tags) => {
+    if (!tags?.length) return "/blog";
+
+    // Find the internal tag (tags starting with #)
+    const internalTag = tags.find(
+      (tag) => tag.visibility === "internal" && tag.name.startsWith("#")
+    );
+
+    // Remove the # and use the tag name as the route, fallback to 'blog' if no internal tag
+    return internalTag ? `/${internalTag.name.slice(1)}` : "/blog";
+  };
+
+  const baseRoute = getRouteFromTags(tags);
+
   return (
-    <Link href={`/account-opening/${slug}`} className="block flex-grow">
+    <Link href={`${baseRoute}/${slug}`} className="block flex-grow">
       <div className="h-full group overflow-hidden relative flex flex-col">
         <div className="flex flex-col h-full">
           <div className="mb-2 overflow-hidden h-[4.5em]">
-            {" "}
-            {/* Fixed height for title */}
             <Heading className="md:text-subheading text-mobileSubHeading text-brown group-hover:text-black font-bold line-clamp-2">
               {title}
             </Heading>
           </div>
           <div className="flex-grow">
-            <p className="text-body line-clamp-4 font-body ">{excerpt}</p>
+            <p className="text-body line-clamp-4 font-body">{excerpt}</p>
           </div>
         </div>
         <div className="flex justify-end mt-4 items-center">

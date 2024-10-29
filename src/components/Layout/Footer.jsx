@@ -137,9 +137,9 @@ const Footer = () => {
                 >
                   Disclosure
                 </CustomLink>,
-                // <CustomLink key="support" to="/support">
-                //   Support
-                // </CustomLink>,
+                <CustomLink key="support" to="/">
+                  Support
+                </CustomLink>,
               ]}
             />
           </div>
