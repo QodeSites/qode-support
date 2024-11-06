@@ -3,12 +3,21 @@ import Text from '@/components/common/Text';
 import Section from '@/components/container/Section';
 import { notFound } from 'next/navigation';
 
-// Fetch post by slug only
+// Add export const dynamic = 'force-dynamic' at the top level
+export const dynamic = 'force-dynamic';
+// Add revalidate = 0 to disable caching at the page level
+export const revalidate = 0;
+
+// Modify fetch function to include cache: 'no-store'
 async function getBlogPost(slug) {
     try {
         const key = process.env.NEXT_PUBLIC_GHOST_BLOG_KEY;
         const response = await fetch(
-            `https://blogs.qodeinvest.com/ghost/api/content/posts/?key=${key}&filter=slug:${slug}&include=tags`
+            `https://blogs.qodeinvest.com/ghost/api/content/posts/?key=${key}&filter=slug:${slug}&include=tags`,
+            {
+                cache: 'no-store', // Disable caching for this fetch request
+                next: { revalidate: 0 } // Additional way to disable caching
+            }
         );
 
         if (!response.ok) {
@@ -28,20 +37,19 @@ async function getBlogPost(slug) {
     }
 }
 
-// Blog post component
+// Blog post component (rest remains the same)
 export default async function BlogPost({ params }) {
     const { category, slug } = params;
 
-    console.log('Category:', category); // Should be "account-opening"
-    console.log('Slug:', slug);         // Should be "how-to-open-an-account-with-our-pms-as-a-llp-partnership"
+    console.log('Category:', category);
+    console.log('Slug:', slug);
 
     const post = await getBlogPost(slug);
 
     if (!post) {
-        return notFound();  // If no post found with slug, show 404
+        return notFound();
     }
 
-    // Optionally: Validate if the category matches the internal tag
     const hasMatchingTag = post.tags.some(
         (tag) =>
             tag.visibility === 'internal' &&
@@ -50,7 +58,7 @@ export default async function BlogPost({ params }) {
 
     if (!hasMatchingTag) {
         console.log('Tag mismatch detected');
-        return notFound();  // If the category doesn't match, show 404
+        return notFound();
     }
 
     function formatDate(dateString) {
