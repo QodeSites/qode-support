@@ -6,12 +6,12 @@ export async function POST(request) {
         const body = await request.json()
 
         // Forward the request to your API
-        const response = await fetch('https://helpdesk.qodeinvest.com/api/v1/ticket', {
+        const response = await fetch('https://workspace.qodeinvest.com/api/resource/HD Ticket', {
             method: 'POST',
-            headers: {
-                'Authorization': 'bearer J9V49RIOFS3WN2VPYHHKR3WS8UT8VUJMMJPIXSK5OXK6CLMHPNHGYNJL0ZSC7VNC',
-                'Content-Type': 'application/json',
-            },
+            // headers: {
+            //     'Authorization': 'bearer J9V49RIOFS3WN2VPYHHKR3WS8UT8VUJMMJPIXSK5OXK6CLMHPNHGYNJL0ZSC7VNC',
+            //     'Content-Type': 'application/json',
+            // },
             body: JSON.stringify(body),
         })
 
