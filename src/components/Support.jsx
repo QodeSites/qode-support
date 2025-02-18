@@ -1,93 +1,55 @@
-// src/components/Blogs.js
-"use client";
+import Heading from '@/components/common/Heading'
+import Text from '@/components/common/Text'
+import Link from 'next/link'
+import React from 'react'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { CiCirclePlus } from "react-icons/ci";
+import supportCategories from '../data/data'
 
-import React from "react";
-import BlogCard from "./BlogCard";
-import { useBlogs } from "@/hooks/useBlogs";
-import Section from "./container/Section";
-import Text from "./common/Text";
 
-const Skeleton = ({ count = 3 }) => {
-  return (
-    <Section padding="none">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-        {Array.from({ length: count }).map((_, index) => (
-          <div key={index} className="p-1 border border-gray-300 animate-pulse">
-            <div className="h-20 bg-gray-200 mb-4"></div>
-            <div className="h-3 bg-gray-200 mb-2"></div>
-            <div className="h-1 bg-gray-200 mb-2"></div>
-            <div className="h-1 bg-gray-200"></div>
-          </div>
-        ))}
-      </div>
-    </Section>
-  );
-};
+import Section from '@/components/container/Section'
 
-const BlogSection = ({ title, posts }) => {
-  if (!posts?.length) return null;
 
-  return (
-    <Section padding="none">
-      <Text className="text-subheading font-subheading text-start text-black sm:mb-4 mb-2">
-        {title}
-      </Text>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-        {posts.map((post) => (
-          <BlogCard
-            key={post.id}
-            html={post.html}
-            title={post.title}
-            excerpt={post.excerpt}
-            reading_time={post.reading_time}
-            slug={post.slug}
-            tags={post.tags}
-            published_at={post.published_at}
-          />
-        ))}
-      </div>
-    </Section>
-  );
-};
-
-const Support = () => {
-  const { blogs, categories, isLoading, error } = useBlogs();
-
-  if (isLoading) {
+const page = () => {
     return (
-      <div className="space-y-8">
-        <Skeleton />
-        <Skeleton />
-      </div>
-    );
-  }
+        <div className=" ">
+            {/* Banner */}
+            <div className=" pt-8 px-2">
+                <div className="max-w-4xl mx-auto text-center">
+                    <Heading isItalic className="text-brown">Support Portal</Heading>
+                    {/* <p className="text-xl text-black">Find answers to your questions and get the support you need</p> */}
+                </div>
+            </div>
 
-  if (error) {
-    return <div className="text-red-500 text-center py-4">{error}</div>;
-  }
+            {/* Categories Section */}
+            <Section>
+                <div className="grid grid-cols-3 gap-18">
+                    {supportCategories.map((category) => (
+                        <div key={category.title} className="flex-1 p-2">
+                            <div className="flex items-center gap-2 mb-3">
 
-  // Check if there are any posts
-  const hasNoPosts = categories.length === 0;
+                                <Text className="text-subheading font-semibold text-brown">
+                                    {category.title}
+                                </Text>
+                            </div>
+                            <ul className="space-y-18 pl-0">
+                                {category.subcategories.map((subcategory) => (
+                                    <li key={subcategory.name}>
+                                        <Link
+                                            href={`/support/${category.title.toLowerCase().replace(/\s+/g, '-')}?sub=${subcategory.name.toLowerCase().replace(/\s+/g, '-')}`}
+                                            className="flex items-center gap-2 text-beige text-body font-body hover:text-brown"
+                                        >
+                                            {subcategory.name}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    ))}
+                </div>
+            </Section>
+        </div >
+    )
+}
 
-  if (hasNoPosts) {
-    return (
-      <div className="text-center py-4 text-gray-600">
-        No support articles available at the moment.
-      </div>
-    );
-  }
-
-  return (
-    <div className="mx-auto mt-4">
-      {categories.map((category) => (
-        <BlogSection
-          key={category.id}
-          title={category.title}
-          posts={blogs[category.id]}
-        />
-      ))}
-    </div>
-  );
-};
-
-export default Support;
+export default page
