@@ -15,9 +15,19 @@ const CategoryPage = () => {
     const [activeCategory, setActiveCategory] = useState(null);
     const [activeSubcategory, setActiveSubcategory] = useState(null);
 
+    // Improved slug generator that handles special characters
+    const generateSlug = (text) => {
+        return text
+            .toLowerCase()
+            .replace(/&/g, 'and') // Replace & with 'and'
+            .replace(/[^\w\s-]/g, '') // Remove non-word chars (except spaces and hyphens)
+            .replace(/\s+/g, '-') // Replace spaces with hyphens
+            .replace(/-+/g, '-'); // Replace multiple hyphens with single hyphen
+    };
+
     useEffect(() => {
         const currentCategory = supportCategories.find(
-            cat => cat.title.toLowerCase().replace(/\s+/g, '-') === category
+            cat => generateSlug(cat.title) === category
         );
 
         if (currentCategory) {
@@ -25,7 +35,7 @@ const CategoryPage = () => {
 
             if (subcategoryParam) {
                 const subcategory = currentCategory.subcategories.find(
-                    sub => sub.name.toLowerCase().replace(/\s+/g, '-') === subcategoryParam
+                    sub => generateSlug(sub.name) === subcategoryParam
                 );
                 if (subcategory) {
                     setActiveSubcategory(subcategory);
@@ -38,16 +48,12 @@ const CategoryPage = () => {
         }
     }, [category, subcategoryParam]);
 
-    const generateSlug = (text) => {
-        return text.toLowerCase().replace(/\s+/g, '-');
-    };
-
     if (!activeCategory || !activeSubcategory) {
         return <div>Loading...</div>;
     }
 
     return (
-        <div className="min-h-screen  mt-7">
+        <div className="min-h-screen mt-7">
             <div className="container mx-auto">
                 <div className="flex justify-center">
                     <div className="w-full max-w-7xl">
@@ -66,10 +72,11 @@ const CategoryPage = () => {
                                             <li key={subcategory.name}>
                                                 <Link
                                                     href={`/support/${generateSlug(activeCategory.title)}?sub=${generateSlug(subcategory.name)}`}
-                                                    className={`flex items-center px-2 py-1.5 text-sm rounded hover:bg-gray-50 ${subcategory === activeSubcategory
+                                                    className={`flex items-center px-2 py-1.5 text-sm rounded hover:bg-gray-50 ${
+                                                        generateSlug(subcategory.name) === generateSlug(activeSubcategory.name)
                                                         ? 'text-beige font-semibold bg-gray-50'
                                                         : 'text-gray-600'
-                                                        }`}
+                                                    }`}
                                                 >
                                                     <span className="text-gray-400 mr-2">-</span>
                                                     {subcategory.name}
@@ -88,7 +95,7 @@ const CategoryPage = () => {
                                     {activeSubcategory.questions.map((item, index) => (
                                         <div
                                             key={index}
-                                            className="bg-white   transition-shadow"
+                                            className="bg-white transition-shadow"
                                         >
                                             <Text className="text-lg font-semibold mb-2 text-gray-800">
                                                 {item.question}

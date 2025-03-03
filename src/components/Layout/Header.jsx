@@ -135,14 +135,23 @@ const Header = () => {
                 About Us
               </CustomLink>
               <CustomLink
-                href="https://dashboard.qodeinvest.com/"
+                href="https://qodeinvest.com/featured-in"
+                rel="noopener noreferrer"
+                className={`text-body font-body transition duration-300 ${
+                  isHomePage && !isScrolled ? "text-beige" : "text-beige"
+                }`}
+              >
+                Media
+              </CustomLink>
+              <CustomLink
+                href="https://eclientreporting.nuvamaassetservices.com/wealthspectrum/app/login"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`text-body font-body transition duration-300 ${
                   isHomePage && !isScrolled ? "text-beige" : "text-beige"
                 }`}
               >
-                Dashboard
+                Client Login
               </CustomLink>
             </nav>
 

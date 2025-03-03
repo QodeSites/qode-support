@@ -5,9 +5,13 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 const Breadcrumb = ({ category, subcategory }) => {
   const generateSlug = (text) => {
-    return text?.toLowerCase().replace(/\s+/g, "-") || "";
+    return text
+      .toLowerCase()
+      .replace(/&/g, 'and') // Replace & with 'and'
+      .replace(/[^\w\s-]/g, '') // Remove non-word chars (except spaces and hyphens)
+      .replace(/\s+/g, '-') // Replace spaces with hyphens
+      .replace(/-+/g, '-'); // Replace multiple hyphens with single hyphen
   };
-
   return (
     <nav className="flex items-center space-x-18 ml-20 text-sm text-gray-600 mt-20">
       <Link href="/" className="hover:text-brown transition-colors">
